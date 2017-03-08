@@ -45,7 +45,7 @@ create table PackageContent (
 	ammountValue varchar(255),
 	ammountUnit varchar(255),
 	ammountSystem varchar(255),
-    primary key(packageID,itemReference, amountValue, ammountUnit, ammountSystem),
+    primary key(packageID,itemReference, ammountValue, ammountUnit, ammountSystem),
     foreign key(packageID) references MedPackage(id) ON DELETE CASCADE ON UPDATE CASCADE	
 );
 
