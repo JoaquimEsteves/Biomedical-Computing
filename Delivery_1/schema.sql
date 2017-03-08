@@ -42,11 +42,11 @@ create table MedPackage (
 create table PackageContent (
 	-- Weak entity of package
 	packageID varchar(255) not null unique,
-    item-reference varchar(255),
+    itemReference varchar(255),
 	ammountValue varchar(255),
 	ammountUnit varchar(255),
 	ammountSystem varchar(255),
-    primary key(packageID,item-reference, amountValue, ammountUnit, ammountSystem),
+    primary key(packageID,itemReference, amountValue, ammountUnit, ammountSystem),
     foreign key(packageID) references MedPackage(id) ON DELETE CASCADE ON UPDATE CASCADE	
 );
 
@@ -54,13 +54,13 @@ create table PackageContent (
 create table Ingredient (
 	--Weak entity of a product
 	productID varchar(255) not null unique,
-	item-display varchar(255),
+	itemDisplay varchar(255),
 	-- ammount type resolves numerator/denominator ambiguity
 	ammountType varchar(255), 
 	ammountValue varchar(255),
 	ammountUnit varchar(255),
 	ammountSystem varchar(255),
-	primary key (productID, item-display),
+	primary key (productID, itemDisplay),
 	foreign key (productID) references Product(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
