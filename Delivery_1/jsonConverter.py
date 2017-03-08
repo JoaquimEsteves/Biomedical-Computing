@@ -87,6 +87,9 @@ if __name__ == "__main__":
 						system = "'"+str(coding['system'])+"'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
+					print "HERE IT COMES\n\n"
+					print medicationInsert
+					
 					cur.execute(medicationInsert)
 					con.commit();	
 					cur.execute("SELECT * FROM Medication;")
