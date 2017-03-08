@@ -9,3 +9,28 @@ The information age has in many ways served to further dispel the problems assoc
 nowadays more capable than ever when it comes to addressing communication issues.
 
 Nevertheless, greater standartization of terminology remains an important goal if  
+
+
+Q3:
+
+Medication (id (underscore this),text,manufacturer,isBrand,code,display,system)
+		unique(id)
+	
+Product(id,code,display,system)
+	id:		FK Medication(id)
+
+MedPackage(id,code,display,system)
+	id:		FK Medication(id)
+
+PackageContent (packageID,itemReference,ammountValue,ammountUnit,ammountSystem)
+    primary key(packageID,itemReference, ammountValue, ammountUnit, ammountSystem),
+    packageID: FK MedPackage(id)
+
+
+Ingredient (productID,itemDisplay,ammountValue,ammountUnit,ammountSystem)
+    primary key(packageID,itemReference, ammountValue, ammountUnit, ammountSystem),
+    packageID: FK MedPackage(id)
+
+Batch (productID,lotNumber,expirationDate)
+	ProductID:	FK Product(id)
+	primary key (productID,lotNumber),
