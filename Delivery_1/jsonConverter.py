@@ -26,11 +26,9 @@ if __name__ == "__main__":
 		con = lite.connect('myDB.sqlt')
 		
 		cur = con.cursor()    
-		cur.execute('SHOW TABLES;')
+		cur.execute("SELECT * FROM Medication;")
 		
-		data = cur.fetchone()
-		
-		print "%s" % data                
+		print cursor.fetchall()            
 		
 	except lite.Error, e:
 		
