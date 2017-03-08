@@ -67,38 +67,38 @@ if __name__ == "__main__":
 			print "Ok just write down the name of the json file you want to open up!"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
-			data = json.load(data_file)
-			try:
-				if data["resourceType"] != "Medication":
-					print "This is not a medication!"
+				data = json.load(data_file)
+				try:
+					if data["resourceType"] != "Medication":
+						print "This is not a medication!"
+						break
+					medID = data["id"]
+					text = None
+					manufacturer = None
+					isBrand = None
+					code = None
+					display = None
+					system = None
+					if 'text' in data :
+						text = data["text"]
+					if 'manufacturer' in data:
+						manufacturer = data['manufacturer']["reference"]
+					if 'isBrand' in data:
+						isBrand = data['isBrand']
+					if 'code' not in data:	
+						coding = data['code']['coding']
+						code = coding['code']
+						display = coding['display']
+						system = coding['system']
+					medicationInsert = "INSERT INTO Medication VALUES ('"+str(medID)+"'"
+					medicationInsert +=	",'"+str(text)+"','"+str(manufacturer)+"','"+str(isBrand)+"','"+str(code)+"','"+str(display)+"','"+str(system)+"');"
+					cur.execute(medicationInsert)
+					con.commit();	
+				except Exception, e:
+					print "Error %s:" % e.args[0]
 					break
-				medID = data["id"]
-				text = None
-				manufacturer = None
-				isBrand = None
-				code = None
-				display = None
-				system = None
-				if 'text' in data :
-					text = data["text"]
-				if 'manufacturer' in data:
-					manufacturer = data['manufacturer']["reference"]
-				if 'isBrand' in data:
-					isBrand = data['isBrand']
-				if 'code' not in data:	
-					coding = data['code']['coding']
-					code = coding['code']
-					display = coding['display']
-					system = coding['system']
-				medicationInsert = "INSERT INTO Medication VALUES ('"+str(medID)+"'"
-				medicationInsert +=	",'"+str(text)+"','"+str(manufacturer)+"','"+str(isBrand)+"','"+str(code)+"','"+str(display)+"','"+str(system)+"');"
-				cur.execute(medicationInsert)
-				con.commit();	
-			except Exception, e:
-				print "Error %s:" % e.args[0]
-				break
-			
-			pprint(data)
+				
+				pprint(data)
 	except KeyboardInterrupt, e:
 		# if CTRL+C is pressed, then go for last step
 		print "\nCTRL+C - Exiting user application."
