@@ -24,7 +24,7 @@ create table Product (
 	code varchar(255),
 	display varchar(255),
 	system varchar(255),
-    primary key(id)
+    primary key(id),
 	foreign key(id) references Medication(id) ON DELETE CASCADE ON UPDATE CASCADE	
 
 );
@@ -35,8 +35,7 @@ create table MedPackage (
 	code varchar(255),
 	display varchar(255),
 	system varchar(255),
-    primary key(id)
-	primary key(id)
+	primary key(id),
 	foreign key(id) references Medication(id) ON DELETE CASCADE ON UPDATE CASCADE	
 );
 
