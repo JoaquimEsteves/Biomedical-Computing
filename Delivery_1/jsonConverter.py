@@ -28,7 +28,7 @@ if __name__ == "__main__":
 		cur = con.cursor()    
 		cur.execute("SELECT * FROM Medication;")
 		
-		print cursor.fetchall()            
+		print cur.fetchall()            
 		
 	except lite.Error, e:
 		
