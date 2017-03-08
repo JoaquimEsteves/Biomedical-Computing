@@ -22,27 +22,22 @@ con = None
 
 
 if __name__ == "__main__":
-	try:
-		con = lite.connect('myDB.sqlt')
-		
-		cur = con.cursor()
-		print "Showing off some of the items on our database! Hopefully it will be empty!\n"	
-		cur.execute("SELECT * FROM Medication;")
-		print cur.fetchall()    
-		cur.execute("SELECT * FROM Product;")
-		print cur.fetchall()            
-		print "trying to insert!"
-		cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet','1','bugger','ayyy','sysshit');")
-		con.commit();
-		cur.execute("INSERT INTO Medication VALUES ('1234','ayy','NULL','1','bugger','ayyy','sysshit');")
-		con.commit();
-		cur.execute("SELECT * FROM Medication;")
-		print cur.fetchall()    
-		print "Hopefully we can see that inserting values works, with that out of the way let's start analyzing some jsons!\n\n"
-	except lite.Error, e:
-		
-		print "Error %s:" % e.args[0]
-		sys.exit(1)
+	con = lite.connect('myDB.sqlt')
+	
+	cur = con.cursor()
+	print "Showing off some of the items on our database! Hopefully it will be empty!\n"	
+	cur.execute("SELECT * FROM Medication;")
+	print cur.fetchall()    
+	cur.execute("SELECT * FROM Product;")
+	print cur.fetchall()            
+	print "trying to insert!"
+	cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet','1','bugger','ayyy','sysshit');")
+	con.commit();
+	cur.execute("INSERT INTO Medication VALUES ('1234','ayy','NULL','1','bugger','ayyy','sysshit');")
+	con.commit();
+	cur.execute("SELECT * FROM Medication;")
+	print cur.fetchall()    
+	print "Hopefully we can see that inserting values works, with that out of the way let's start analyzing some jsons!\n\n"
 		
 	print "Sucessfully connected to db!"
 	
