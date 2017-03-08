@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		print "trying to insert!"
 		cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet','1','bugger','ayyy','sysshit');")
 		con.commit();
-		cur.execute("INSERT INTO Medication VALUES ('1234','ayy',None,'1','bugger','ayyy','sysshit');")
+		cur.execute("INSERT INTO Medication VALUES ('1234','ayy','NULL','1','bugger','ayyy','sysshit');")
 		con.commit();
 		cur.execute("SELECT * FROM Medication;")
 		print cur.fetchall()    
@@ -72,13 +72,13 @@ if __name__ == "__main__":
 					if data["resourceType"] != "Medication":
 						print "This is not a medication!"
 						break
-					# medID = data["id"]
-					text = None
-					manufacturer = None
-					isBrand = None
-					code = None
-					display = None
-					system = None
+					medID = data["id"]
+					text = 'NULL'
+					manufacturer = 'NULL'
+					isBrand = 'NULL'
+					code = 'NULL'
+					display = 'NULL'
+					system = 'NULL'
 					if 'text' in data :
 						text = data["text"]
 					if 'manufacturer' in data:
