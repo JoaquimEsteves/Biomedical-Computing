@@ -62,7 +62,6 @@ create table Ingredient (
 );
 
 create table Batch (
-	--Weak entity of a product
 	productID varchar(255) not null unique,
 	lotNumber varchar(255),
 	expirationDate varchar(255),
