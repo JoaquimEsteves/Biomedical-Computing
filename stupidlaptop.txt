@@ -1,0 +1,11 @@
+Q2. Given the imprecision of many medical terms, why do you think that serious instances of miscommunication among health care professionals are not more common? 
+Explain also, in your own words, why is greater standardization of terminology necessary if computers rather than humans are to manipulate patient data? 
+
+The lack of major communications problems can the thanked in large part to the history of health care. 
+
+“Increasingly over the latter half of the 20th century, English became the Lingua Franca of medicine, in both international and intra-national communication.” – Showell, C., Cummings, E. and Turner, P. (2010)  
+
+The information age has in many ways served to further dispel the problems associated with miscommunication, armed with powerful search engines and translation tools health care professionals are 
+nowadays more capable than ever when it comes to addressing communication issues.
+
+Nevertheless, greater standartization of terminology remains an important goal if  
