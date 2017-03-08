@@ -5,7 +5,7 @@ import json
 import argparse
 import sqlite3 as lite
 import sys
-
+import utils
 from utils import Logger
 log = Logger(debug=settings.DEBUG)
 from pprint import pprint
