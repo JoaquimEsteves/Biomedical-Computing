@@ -67,7 +67,7 @@ if __name__ == "__main__":
 					if data["resourceType"] != "Medication":
 						print "This is not a medication!"
 						break
-					medID =  "'"+str(data["id"]+ "'"
+					medID =  "'"+str(data["id"])+"'"
 					text = 'NULL'
 					manufacturer = 'NULL'
 					isBrand = 'NULL'
