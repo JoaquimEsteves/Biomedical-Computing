@@ -33,7 +33,7 @@ if __name__ == "__main__":
 		print cur.fetchall()            
 		print "trying to insert!"
 		cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet',1,'bugger','ayyy','sysshit');")
-		cur.commit();
+		con.commit();
 		cur.execute("SELECT * FROM Medication;")
 		print cur.fetchall()    
 	except lite.Error, e:
