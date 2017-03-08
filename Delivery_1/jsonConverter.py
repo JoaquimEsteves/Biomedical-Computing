@@ -80,16 +80,16 @@ if __name__ == "__main__":
 					display = 'NULL'
 					system = 'NULL'
 					if 'text' in data :
-						text = "'"+data["text"]+"'"
+						text = "'"+str(data["text"])+"'"
 					if 'manufacturer' in data:
-						manufacturer = "'"+data['manufacturer']["reference"]+"'"
+						manufacturer = "'"+str(data['manufacturer']["reference"])+"'"
 					if 'isBrand' in data:
-						isBrand = "'"+data['isBrand']+"'"
+						isBrand = "'"+str(data['isBrand'])+"'"
 					if 'code' not in data:	
-						coding = "'"+data+['code']['coding']+"'"
-						code = "'"+coding['code']+"'"
-						display = "'"+coding['display']+"'"
-						system = "'"+coding['system']+"'"
+						coding = "'"+str(data+['code']['coding'])+"'"
+						code = "'"+str(coding['code'])+"'"
+						display = "'"+str(coding['display'])+"'"
+						system = "'"+str(coding['system'])+"'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					cur.execute(medicationInsert)
