@@ -97,7 +97,7 @@ if __name__ == "__main__":
 					cur.execute("SELECT * FROM Medication;")
 					print "PLEASE WORK\n\n\\n\n\n\nn\n"
 					print cur.fetchall()
-				except ValueError::
+				except ValueError:
 					print "Error %s:" % e.args[0]
 					break
 				
