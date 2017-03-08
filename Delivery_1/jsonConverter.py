@@ -80,21 +80,24 @@ if __name__ == "__main__":
 					display = 'NULL'
 					system = 'NULL'
 					if 'text' in data :
-						text = data["text"]
+						text = "'"+data["text"]+"'"
 					if 'manufacturer' in data:
-						manufacturer = data['manufacturer']["reference"]
+						manufacturer = "'"+data['manufacturer']["reference"]+"'"
 					if 'isBrand' in data:
-						isBrand = data['isBrand']
+						isBrand = "'"+data['isBrand']+"'"
 					if 'code' not in data:	
-						coding = data['code']['coding']
-						code = coding['code']
-						display = coding['display']
-						system = coding['system']
-					medicationInsert = "INSERT INTO Medication VALUES ('"+str(medID)+"'"
-					medicationInsert +=	",'"+str(text)+"','"+str(manufacturer)+"','"+str(isBrand)+"','"+str(code)+"','"+str(display)+"','"+str(system)+"');"
+						coding = "'"data+['code']['coding']+"'"
+						code = "'"+coding['code']+"'"
+						display = "'"+coding['display']+"'"
+						system = "'"+coding['system']+"'"
+					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
+					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					cur.execute(medicationInsert)
 					con.commit();	
-				except Exception, e:
+					cur.execute("SELECT * FROM Medication;")
+					print "PLEASE WORK\n\n\\n\n\n\nn\n"
+					print cur.fetchall()
+				except ValueError::
 					print "Error %s:" % e.args[0]
 					break
 				
