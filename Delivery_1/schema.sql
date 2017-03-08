@@ -1,10 +1,11 @@
-drop table if exists Medication;
-drop table if exists MedPackage;
-drop table if exists Product;
+
+
 drop table if exists Ingredient;
 drop table if exists Batch;
 drop table if exists PackageContent;
-
+drop table if exists MedPackage;
+drop table if exists Product;
+drop table if exists Medication;
 
 
 
