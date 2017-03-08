@@ -6,8 +6,8 @@ import argparse
 import sqlite3 as lite
 import sys
 import utils
-from utils import Logger
-log = Logger(debug=settings.DEBUG)
+# from utils import Logger
+# log = Logger(debug=settings.DEBUG)
 from pprint import pprint
 
 #!/usr/bin/python
@@ -37,7 +37,7 @@ if __name__ == "__main__":
 		print "Error %s:" % e.args[0]
 		sys.exit(1)
 		
-	log.info("Connected to database correctly!...")
+	# log.info("Connected to database correctly!...")
 	
 	###### MONTERS BELLOW
 	'''
