@@ -13,7 +13,7 @@ create table Medication (
     id varchar(255) not null unique,
     text varchar(255),
     manufacturer varchar(255),
-	isBrand Boolean, 
+	isBrand varchar(30), 
 	code varchar(255),
 	display varchar(255),
 	system varchar(255),
