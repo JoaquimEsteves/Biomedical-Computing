@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		print "trying to insert!"
 		cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet',1,'bugger','ayyy','sysshit');")
 		con.commit();
-		cur.execute("INSERT INTO Medication VALUES ('1234','ayy',,1,'bugger','ayyy','sysshit');")
+		cur.execute("INSERT INTO Medication VALUES ('1234','ayy',NULL,1,'bugger','ayyy','sysshit');")
 		con.commit();
 		cur.execute("SELECT * FROM Medication;")
 		print cur.fetchall()    
