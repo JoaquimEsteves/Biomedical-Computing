@@ -72,7 +72,7 @@ if __name__ == "__main__":
 					if data["resourceType"] != "Medication":
 						print "This is not a medication!"
 						break
-					medID = data["id"]
+					# medID = data["id"]
 					text = None
 					manufacturer = None
 					isBrand = None
