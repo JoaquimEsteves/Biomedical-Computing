@@ -40,7 +40,6 @@ create table MedPackage (
 );
 
 create table PackageContent (
-	-- Weak entity of package
 	packageID varchar(255) not null unique,
     itemReference varchar(255),
 	ammountValue varchar(255),
@@ -52,10 +51,8 @@ create table PackageContent (
 
 
 create table Ingredient (
-	--Weak entity of a product
 	productID varchar(255) not null unique,
 	itemDisplay varchar(255),
-	-- ammount type resolves numerator/denominator ambiguity
 	ammountType varchar(255), 
 	ammountValue varchar(255),
 	ammountUnit varchar(255),
