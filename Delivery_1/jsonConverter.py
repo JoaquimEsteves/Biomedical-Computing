@@ -25,11 +25,17 @@ if __name__ == "__main__":
 	try:
 		con = lite.connect('myDB.sqlt')
 		
-		cur = con.cursor()    
+		cur = con.cursor()
+		print "Showing off some of the items on our database!\n"	
 		cur.execute("SELECT * FROM Medication;")
-		
+		print cur.fetchall()    
+		cur.execute("SELECT * FROM Product;")
 		print cur.fetchall()            
-		
+		print "trying to insert!"
+		cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet',1,'bugger','ayyy','sysshit');")
+		cur.commit();
+		cur.execute("SELECT * FROM Medication;")
+		print cur.fetchall()    
 	except lite.Error, e:
 		
 		print "Error %s:" % e.args[0]
