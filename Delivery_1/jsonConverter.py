@@ -95,6 +95,7 @@ if __name__ == "__main__":
 							display = "'["
 							system = "'["
 							for i in data['code']['coding']:
+								print i
 								code += str(data['code']['coding'][i]['code'])+","
 								display += str(data['code']['coding'][i]['display'])+","
 								system += str(data['code']['coding'][i]['system'])+","
