@@ -70,7 +70,7 @@ def parseProduct(cur,con,data,medID):
 	display = 'NULL'
 	system = 'NULL'
 	if 'form' in data["product"]:
-		if 'code' in data["product"]["form"]:
+		if 'coding' in data["product"]["form"]:
 			#For some SILLY REASON, code also apparently can have text!
 			if 'text' in data["product"]["form"]:
 				text = json.dumps(data["product"]["form"]['text'])
