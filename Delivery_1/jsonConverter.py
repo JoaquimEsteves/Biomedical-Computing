@@ -56,7 +56,8 @@ def parseMedication(cur,con,data):
 			system += "]'"
 	medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 	medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
-	
+	print "\n\n\n\nPrinting MEDICATION INSERT!"
+	print medicationInsert
 	cur.execute(medicationInsert)
 	con.commit();	
 	cur.execute("SELECT * FROM Medication;")
@@ -122,9 +123,9 @@ if __name__ == "__main__":
 			with open(input_data) as data_file:    
 				data = json.load(data_file)
 				dataTest = json.dumps(data)
-				print "DATA TEEEEEEEEEST\n\n\n\n\n\n"
-				print dataTest
-				print "DATATATAATATATA"
+				# print "DATA TEEEEEEEEEST\n\n\n\n\n\n"
+				# print dataTest
+				# print "DATATATAATATATA"
 				try:
 					medID = parseMedication(cur,con,data)
 					if 'product' in data:
