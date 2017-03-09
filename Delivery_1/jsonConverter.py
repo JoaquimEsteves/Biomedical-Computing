@@ -200,7 +200,7 @@ def parsePackageContent(cur,con,data,medID):
 				# ammountType = "'numerator'"
 				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["value"]) + "'"
 				ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["system"]) + "'"
-				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["code"]) + "'"
+				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["unit"]) + "'"
 				contentInsert = "INSERT INTO PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
 				cur.execute(ingredientInsert)
 				con.commit();	
