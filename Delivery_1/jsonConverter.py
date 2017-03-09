@@ -94,11 +94,14 @@ if __name__ == "__main__":
 							code = "'["
 							display = "'["
 							system = "'["
-							for i in data['code']['coding']:
+							max_items = sum(data['code']['coding'].values)
+							i = 0
+							while i < max_items:
 								print i
 								code += str(data['code']['coding'][i]['code'])+","
 								display += str(data['code']['coding'][i]['display'])+","
 								system += str(data['code']['coding'][i]['system'])+","
+								i++
 							code += "]'"
 							display += "]'"
 							system += "]'"
