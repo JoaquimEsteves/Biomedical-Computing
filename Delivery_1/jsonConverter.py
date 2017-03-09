@@ -84,10 +84,10 @@ if __name__ == "__main__":
 					if 'isBrand' in data:
 						isBrand = "'"+str(data['isBrand'])+"'"
 					if 'code' in data:	
-						coding = "'"+str(data['code']['coding'])+"'"
-						code = "'"+str(coding['code'])+"'"
-						display = "'"+str(coding['display'])+"'"
-						system = "'"+str(coding['system'])+"'"
+						# coding = "'"+str(data['code']['coding'])+"'"
+						code = "'"+str(data['code']['coding']['code'])+"'"
+						display = "'"+str(data['code']['coding']['display'])+"'"
+						system = "'"+str(data['code']['coding']['system'])+"'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					print "HERE IT COMES\n\n"
