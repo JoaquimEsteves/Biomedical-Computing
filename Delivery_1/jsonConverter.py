@@ -5,6 +5,7 @@ import json
 import argparse
 import sqlite3 as lite
 import sys
+import base64
 # import utils
 # from utils import Logger
 # log = Logger(debug=settings.DEBUG)
@@ -62,7 +63,7 @@ if __name__ == "__main__":
 			print "Ok just write down the name of the json file you want to open up!"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
-				data = json.dumps(data_file)
+				data = json.load(data_file)
 				try:
 					if data["resourceType"] != "Medication":
 						print "This is not a medication!"
@@ -75,7 +76,9 @@ if __name__ == "__main__":
 					display = 'NULL'
 					system = 'NULL'
 					if 'text' in data :
-						text = "'"+str(data["text"])+"'"
+						# text = "'"+str(data["text"])+"'"
+						text = str(data["text"])
+						encodedText = "'"+str(base64.b64encode(text))+"'"
 					if 'manufacturer' in data:
 						manufacturer = "'"+str(data['manufacturer']["reference"])+"'"
 					if 'isBrand' in data:
