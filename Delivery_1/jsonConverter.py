@@ -47,9 +47,9 @@ def parseMedication(cur,con,data):
 			max_items = len(data['code']['coding'])
 			i = 0
 			while i < max_items:
-				code += str(data['code']['coding'][i]['code'])+","
-				display += str(data['code']['coding'][i]['display'])+","
-				system += str(data['code']['coding'][i]['system'])+","
+				code += json.dumps(data['code']['coding'][i]['code'])+","
+				display += json.dumps(data['code']['coding'][i]['display'])+","
+				system += json.dumps(data['code']['coding'][i]['system'])+","
 				i += 1
 			code += "]'"
 			display += "]'"
