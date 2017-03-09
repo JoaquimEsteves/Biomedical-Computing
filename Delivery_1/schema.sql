@@ -22,6 +22,7 @@ create table Medication (
 	
 create table Product (
     id varchar(255) not null unique,
+	text varchar(255),
 	code varchar(255),
 	display varchar(255),
 	system varchar(255),
@@ -33,6 +34,7 @@ create table Product (
 	
 create table MedPackage (
 	id varchar(255) not null unique, 
+	text varchar(255),
 	code varchar(255),
 	display varchar(255),
 	system varchar(255),

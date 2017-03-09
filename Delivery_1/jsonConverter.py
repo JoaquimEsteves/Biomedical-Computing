@@ -19,6 +19,7 @@ def parseMedication(cur,con,data):
 		return
 	medID =  "'"+str(data["id"])+"'"
 	text = 'NULL'
+	encodedText = 'NULL'
 	manufacturer = 'NULL'
 	isBrand = 'NULL'
 	code = 'NULL'
@@ -46,7 +47,6 @@ def parseMedication(cur,con,data):
 			max_items = len(data['code']['coding'])
 			i = 0
 			while i < max_items:
-				print i
 				code += str(data['code']['coding'][i]['code'])+","
 				display += str(data['code']['coding'][i]['display'])+","
 				system += str(data['code']['coding'][i]['system'])+","
@@ -62,8 +62,38 @@ def parseMedication(cur,con,data):
 	cur.execute("SELECT * FROM Medication;")
 	print "\n\n\n\nPrinting out the complete list of Medications!"
 	print cur.fetchall()
+	return medID
 
-
+def parseProduct(cur,con,data,medID):
+	text = 'NULL'
+	code = 'NULL'
+	display = 'NULL'
+	system = 'NULL'
+	if 'form' in data["product"]:
+		if 'code' in data["product"]["form"]:
+			#For some SILLY REASON, code also apparently can have text!
+			if 'text' in data["product"]["form"]['code']:
+				text = base64.b64decode(encodedText) + "Coding Text: " + str(data['code']['text'])
+				encodedText = "'"+str(base64.b64encode(text))+"'"
+			# coding = "'"+str(data['code']['coding'])+"'"
+			if 'coding' in data['code']:
+				code = "'["
+				display = "'["
+				system = "'["
+				max_items = len(data['code']['coding'])
+				i = 0
+				while i < max_items:
+					code += str(data['code']['coding'][i]['code'])+","
+					display += str(data['code']['coding'][i]['display'])+","
+					system += str(data['code']['coding'][i]['system'])+","
+					i += 1
+				code += "]'"
+				display += "]'"
+				system += "]'"	
+	return
+def parsePackage(cur,con,data,medID):
+	return
+	
 if __name__ == "__main__":
 	con = lite.connect('myDB.sqlt')
 	
@@ -90,9 +120,14 @@ if __name__ == "__main__":
 			print "Ok just write down the name of the json file you want to open up!\n\n\n"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
-				data = json.load(data_file)
+				data = json.loads(data_file)
 				try:
-					parseMedication(cur,con,data)
+					medID = parseMedication(cur,con,data)
+					if 'product' in data:
+						parseProduct(cur,con,data, medID)
+					if 'package' in data:
+						parsePackage(cur,con,data,medID)
+					
 				except ValueError:
 					print "Error %s:" % e.args[0]
 					break
