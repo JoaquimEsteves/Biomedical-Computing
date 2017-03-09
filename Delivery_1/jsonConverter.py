@@ -126,7 +126,10 @@ def parseIngredient(cur,con,data,medID):
 				ammountUnit ="'" +json.dumps(data["product"]["ingredient"][i]["amount"]["denominator"]["code"]) + "'"
 				ingredientInsert = "INSERT INTO Ingredient VALUES ("+medID+","+itemDisplay+","+ammountType+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
 				cur.execute(ingredientInsert)
-				con.commit();	
+				con.commit();
+	cur.execute("SELECT * FROM Ingredient;")
+	print "\n\n\n\nPrinting out the complete list of Ingredients!"
+	print cur.fetchall()
 	
 def parsePackage(cur,con,data,medID):
 	return
