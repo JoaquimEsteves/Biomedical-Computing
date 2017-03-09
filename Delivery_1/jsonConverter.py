@@ -94,6 +94,8 @@ def parseProduct(cur,con,data,medID):
 	cur.execute(productInsert)
 	con.commit();	
 	cur.execute("SELECT * FROM Product;")
+	print "\n\n\n\nPrinting out the complete list of Products!"
+	print cur.fetchall()
 	return
 	
 
