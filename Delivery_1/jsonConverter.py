@@ -137,10 +137,10 @@ def parseIngredient(cur,con,data,medID):
 def parseBatch(cur,con,data,medID):
 	lotNumber = 'NULL'
 	expirationDate = 'NULL'
-	if 'lotNumber' in data["product"]["batch"]:
-		lotNumber = "'" + json.dumps(data["product"]["batch"]["lotNumber"])
-	if 'expirationDate' in data["product"]["batch"]:
-		expirationDate = "'" + json.dumps(data["product"]["batch"]["expirationDate"])
+	if 'lotNumber' in data["product"]["batch"][0]:
+		lotNumber = "'" + json.dumps(data["product"]["batch"][0]["lotNumber"])
+	if 'expirationDate' in data["product"]["batch"][0]:
+		expirationDate = "'" + json.dumps(data["product"]["batch"][0]["expirationDate"])
 	batchInsert = "INSERT INTO batch VALUES ("+medID+","+lotNumber+","+expirationDate+");"
 	cur.execute(batchInsert)
 	con.commit();
@@ -195,7 +195,7 @@ def parsePackageContent(cur,con,data,medID):
 		max_items = len(data["package"]["content"])
 		i = 0
 		while i < max_items:
-			itemDisplay = json.dumps(data["package"]["content"][i]["item"]["display"])
+			itemDisplay = json.dumps(data["package"]["content"][i]["item"]["reference"])
 			if "amount" in data["package"]["content"][i]:
 				# ammountType = "'numerator'"
 				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["value"]) + "'"
