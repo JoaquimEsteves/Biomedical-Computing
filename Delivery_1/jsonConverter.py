@@ -86,9 +86,15 @@ if __name__ == "__main__":
 						isBrand = "'"+str(data['isBrand'])+"'"
 					if 'code' in data:	
 						# coding = "'"+str(data['code']['coding'])+"'"
-						code = "'"+str(data['code']['coding'][0]['code'])+"'"
-						display = "'"+str(data['code']['coding'][0]['display'])+"'"
-						system = "'"+str(data['code']['coding'][0]['system'])+"'"
+						if 'coding' in data['code']:
+							code = "Codes: "
+							display = "Displays: "
+							system = "Systems: "
+							for i in data['code']['coding']:
+								code += "'"+str(data['code']['coding'][0]['code'])+"'"
+								display += "'"+str(data['code']['coding'][0]['display'])+"'"
+								system += "'"+str(data['code']['coding'][0]['system'])+"'"
+								
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					print "HERE IT COMES\n\n"
@@ -103,7 +109,7 @@ if __name__ == "__main__":
 					print "Error %s:" % e.args[0]
 					break
 				
-				pprint(data)
+				# pprint(data)
 	except KeyboardInterrupt, e:
 		# if CTRL+C is pressed, then go for last step
 		print "\nCTRL+C - Exiting user application."
