@@ -208,8 +208,6 @@ def parsePackageContent(cur,con,data,medID):
 		cur.execute("SELECT * FROM PackageContent;")
 		print "\n\n\n\nPrinting out the complete list of contents!"
 		print cur.fetchall()
-#MONSTERS ABOVE
-
 
 
 if __name__ == "__main__":
@@ -221,15 +219,7 @@ if __name__ == "__main__":
 	print cur.fetchall()    
 	cur.execute("SELECT * FROM Product;")
 	print cur.fetchall()            
-	# print "trying to insert!"
-	# cur.execute("INSERT INTO Medication VALUES ('123','ayy','manushiet','1','bugger','ayyy','sysshit');")
-	# con.commit();
-	# cur.execute("INSERT INTO Medication VALUES ('1234','ayy','NULL','1','bugger','ayyy','sysshit');")
-	# con.commit();
-	# cur.execute("SELECT * FROM Medication;")
-	# print cur.fetchall()    
-	# print "Hopefully we can see that inserting values works, with that out of the way let's start analyzing some jsons!\n\n"
-		
+	
 	print "Sucessfully connected to db!"
 	
 	try:
