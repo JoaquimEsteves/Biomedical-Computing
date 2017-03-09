@@ -201,10 +201,7 @@ def parsePackageContent(cur,con,data,medID):
 				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["value"]) + "'"
 				ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["system"]) + "'"
 				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["unit"]) + "'"
-				contentInsert = "INSERT INTO PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
-				print "AAAAAAAAAAAAAAAAAARGH\n\n\n"
-				print contentInsert
-				print "AAAAAAAAAAAARGH\n\n\n"
+				contentInsert = "INSERT INTO PackageContent VALUES("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
 				cur.execute(contentInsert)
 				con.commit();	
 			i += 1
