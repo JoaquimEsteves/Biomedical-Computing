@@ -94,7 +94,7 @@ if __name__ == "__main__":
 							code = "'["
 							display = "'["
 							system = "'["
-							max_items = sum(data['code']['coding'].values)
+							max_items = len(data['code']['coding'])
 							i = 0
 							while i < max_items:
 								print i
