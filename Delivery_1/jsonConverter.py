@@ -56,13 +56,11 @@ def parseMedication(cur,con,data):
 			system += "]'"
 	medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 	medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
-	# print "HERE IT COMES\n\n"
-	# print medicationInsert
 	
 	cur.execute(medicationInsert)
 	con.commit();	
 	cur.execute("SELECT * FROM Medication;")
-	print "Printing out the complete list of Medications!"
+	print "\n\n\n\nPrinting out the complete list of Medications!"
 	print cur.fetchall()
 
 
@@ -89,7 +87,7 @@ if __name__ == "__main__":
 	try:
 		while(True):
 			# waits for client input:
-			print "Ok just write down the name of the json file you want to open up!"
+			print "Ok just write down the name of the json file you want to open up!\n\n\n"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
 				data = json.load(data_file)
