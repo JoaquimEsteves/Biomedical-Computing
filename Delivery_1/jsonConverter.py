@@ -16,7 +16,7 @@ con = None
 def parseMedication(cur,con,data):
 	if data["resourceType"] != "Medication":
 		print "This is not a medication!"
-		break
+		return
 	medID =  "'"+str(data["id"])+"'"
 	text = 'NULL'
 	manufacturer = 'NULL'
