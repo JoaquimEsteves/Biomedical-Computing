@@ -107,13 +107,13 @@ if __name__ == "__main__":
 							system += "]'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
-					print "HERE IT COMES\n\n"
-					print medicationInsert
+					# print "HERE IT COMES\n\n"
+					# print medicationInsert
 					
 					cur.execute(medicationInsert)
 					con.commit();	
 					cur.execute("SELECT * FROM Medication;")
-					print "PLEASE WORK\n\n\n\n\n\n\n"
+					print "Printing out the complete list of Medications!"
 					print cur.fetchall()
 				except ValueError:
 					print "Error %s:" % e.args[0]
