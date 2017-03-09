@@ -62,7 +62,7 @@ if __name__ == "__main__":
 			print "Ok just write down the name of the json file you want to open up!"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
-				data = json.load(data_file)
+				data = json.dumps(data_file)
 				try:
 					if data["resourceType"] != "Medication":
 						print "This is not a medication!"
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 						manufacturer = "'"+str(data['manufacturer']["reference"])+"'"
 					if 'isBrand' in data:
 						isBrand = "'"+str(data['isBrand'])+"'"
-					if 'code' not in data:	
+					if 'code' in data:	
 						coding = "'"+str(data+['code']['coding'])+"'"
 						code = "'"+str(coding['code'])+"'"
 						display = "'"+str(coding['display'])+"'"
