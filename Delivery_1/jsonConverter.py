@@ -98,6 +98,8 @@ def parseProduct(cur,con,data,medID):
 	print cur.fetchall()
 	if 'ingredient' in data["product"]:
 		parseIngredient(cur,con,data,medID)
+	if 'batch' in data["product"]:
+		parseBatch(cur,con,data,medID)
 	return
 	
 def parseIngredient(cur,con,data,medID):
@@ -128,15 +130,88 @@ def parseIngredient(cur,con,data,medID):
 				cur.execute(ingredientInsert)
 				con.commit();
 			i += 1
-	else:
-		print "WHAT THE FUCK"
 	cur.execute("SELECT * FROM Ingredient;")
 	print "\n\n\n\nPrinting out the complete list of Ingredients!"
 	print cur.fetchall()
-	
+
+def parseBatch(cur,con,data,medID):
+	lotNumber = 'NULL'
+	expirationDate = 'NULL'
+	if 'lotNumber' in data["product"]["batch"]:
+		lotNumber = "'" + json.dumps(data["product"]["batch"]["lotNumber"])
+	if 'expirationDate' in data["product"]["batch"]:
+		expirationDate = "'" + json.dumps(data["product"]["batch"]["expirationDate"])
+	batchInsert = "INSERT INTO batch VALUES ("+medID+","+lotNumber+","expirationDate");"
+	cur.execute(batchInsert)
+	con.commit();
+	cur.execute("SELECT * FROM Batch;")
+	print "\n\n\n\nPrinting out the complete list of Batches!!"
+	print cur.fetchall()
+
 def parsePackage(cur,con,data,medID):
-	return
+	text = 'NULL'
+	encodedText = 'NULL'
+	code = 'NULL'
+	display = 'NULL'
+	system = 'NULL'
 	
+	if 'container' in data["package"]:
+		#For some SILLY REASON, code also apparently can have text!
+		if 'text' in data["package"]["container"]:
+			text = "Coding Text: " + json.dumps(data["package"]["container"]["coding"]['text'])
+			encodedText = "'"+str(base64.b64encode(text))+"'"
+		# coding = "'"+str(data['code']['coding'])+"'"
+		if 'coding' in data["package"]["container"]:
+			code = "'["
+			display = "'["
+			system = "'["
+			max_items = len(data["package"]["container"]['coding'])
+			i = 0
+			while i < max_items:
+				code += json.dumps(data["package"]["container"]['coding'][i]['code'])+","
+				display += json.dumps(data["package"]["container"]['coding'][i]['display'])+","
+				system += json.dumps(data["package"]["container"]['coding'][i]['system'])+","
+				i += 1
+			code += "]'"
+			display += "]'"
+			system += "]'"
+	packageInsert= "INSERT INTO MedPackage VALUES ("+medID+","+text+","+code+","+display+","+system+");"
+	cur.execute(packageInsert)
+	con.commit();
+	cur.execute("SELECT * FROM MedPackage;")
+	print "\n\n\n\nPrinting out the complete list of Packages!!"
+	print cur.fetchall()
+	if 'content' in data["package"]:
+		parsePackageContent(cur,con,data,medID)
+	return
+
+def parsePackageContent(cur,con,data,medID):
+#
+	itemDisplay = 'NULL'
+	ammountValue = 'NULL'
+	ammountSystem = 'NULL'
+	ammountUnit = 'NULL'
+	if "item" in data["package"]["content"][0]:
+			max_items = len(data["package"]["content"])
+			i = 0
+			while i < max_items:
+				itemDisplay = json.dumps(data["package"]["content"][i]["item"]["display"])
+				if "amount" in data["package"]["content"][i]:
+					# ammountType = "'numerator'"
+					ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["value"]) + "'"
+					ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["system"]) + "'"
+					ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["numerator"]["code"]) + "'"
+					contentInsert = "INSERT INTO Ingredient PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
+					cur.execute(ingredientInsert)
+					con.commit();	
+				i += 1
+		cur.execute("SELECT * FROM Ingredient;")
+		print "\n\n\n\nPrinting out the complete list of Ingredients!"
+		print cur.fetchall()
+#MONSTERS ABOVE
+
+
+
 if __name__ == "__main__":
 	con = lite.connect('myDB.sqlt')
 	
