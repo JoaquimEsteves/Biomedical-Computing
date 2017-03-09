@@ -6,12 +6,9 @@ import argparse
 import sqlite3 as lite
 import sys
 import base64
-# import utils
-# from utils import Logger
-# log = Logger(debug=settings.DEBUG)
 from pprint import pprint
 
-con = None
+# con = None
 
 def parseMedication(cur,con,data):
 	if data["resourceType"] != "Medication":
