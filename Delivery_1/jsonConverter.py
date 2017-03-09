@@ -96,9 +96,38 @@ def parseProduct(cur,con,data,medID):
 	cur.execute("SELECT * FROM Product;")
 	print "\n\n\n\nPrinting out the complete list of Products!"
 	print cur.fetchall()
+	if 'ingredient' in data["product"]:
+		parseIngredient(cur,don,data,medID)
 	return
 	
-
+def parseIngredient(cur,don,data,medID):
+	itemDisplay = 'NULL'
+	ammountType = 'NULL'
+	ammountValue = 'NULL'
+	ammountUnit = 'NULL'
+	ammountSystem = 'NULL'
+	ingredientInsert = ""
+	if "item" in data["product"]["ingredient"]:
+		max_items = len(data["product"]["ingredient"])
+		i = 0
+		while i < max_items:
+			itemDisplay = json.dumps(data["product"]["ingredient"][i]["item"]["display"])
+			if "amount" in data["product"]["ingredient"][i]:
+				ammountType = "'numerator'"
+				ammountValue ="'" + json.dumps(data["product"]["ingredient"][i]["amount"]["numerator"]["value"]) + "'"
+				ammountSystem ="'" + json.dumps(data["product"]["ingredient"][i]["amount"]["numerator"]["system"]) + "'"
+				ammountUnit ="'" +json.dumps(data["product"]["ingredient"][i]["amount"]["numerator"]["code"]) + "'"
+				ingredientInsert = "INSERT INTO Ingredient VALUES ("+medID+","+itemDisplay+","+ammountType+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
+				cur.execute(ingredientInsert)
+				con.commit();	
+				ammountType = "'denominator'"
+				ammountValue ="'" + json.dumps(data["product"]["ingredient"][i]["amount"]["denominator"]["value"]) + "'"
+				ammountSystem ="'" + json.dumps(data["product"]["ingredient"][i]["amount"]["denominator"]["system"]) + "'"
+				ammountUnit ="'" +json.dumps(data["product"]["ingredient"][i]["amount"]["denominator"]["code"]) + "'"
+				ingredientInsert = "INSERT INTO Ingredient VALUES ("+medID+","+itemDisplay+","+ammountType+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
+				cur.execute(ingredientInsert)
+				con.commit();	
+	
 def parsePackage(cur,con,data,medID):
 	return
 	

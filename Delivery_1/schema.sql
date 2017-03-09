@@ -54,13 +54,13 @@ create table PackageContent (
 
 
 create table Ingredient (
-	productID varchar(255) not null unique,
+	productID varchar(255) not null,
 	itemDisplay varchar(255),
 	ammountType varchar(255), 
 	ammountValue varchar(255),
 	ammountUnit varchar(255),
 	ammountSystem varchar(255),
-	primary key (productID, itemDisplay),
+	primary key (productID, itemDisplay,ammountType),
 	foreign key (productID) references Product(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
