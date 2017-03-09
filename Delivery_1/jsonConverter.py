@@ -17,7 +17,7 @@ def parseMedication(cur,con,data):
 	if data["resourceType"] != "Medication":
 		print "This is not a medication!"
 		return
-	medID =  "'"+str(data["id"])+"'"
+	medID =  "'"+json.dumps(data["id"])+"'"
 	text = 'NULL'
 	encodedText = 'NULL'
 	manufacturer = 'NULL'
