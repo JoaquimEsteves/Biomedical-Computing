@@ -192,21 +192,21 @@ def parsePackageContent(cur,con,data,medID):
 	ammountSystem = 'NULL'
 	ammountUnit = 'NULL'
 	if "item" in data["package"]["content"][0]:
-			max_items = len(data["package"]["content"])
-			i = 0
-			while i < max_items:
-				itemDisplay = json.dumps(data["package"]["content"][i]["item"]["display"])
-				if "amount" in data["package"]["content"][i]:
-					# ammountType = "'numerator'"
-					ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["value"]) + "'"
-					ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["system"]) + "'"
-					ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["numerator"]["code"]) + "'"
-					contentInsert = "INSERT INTO Ingredient PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
-					cur.execute(ingredientInsert)
-					con.commit();	
-				i += 1
-		cur.execute("SELECT * FROM Ingredient;")
-		print "\n\n\n\nPrinting out the complete list of Ingredients!"
+		max_items = len(data["package"]["content"])
+		i = 0
+		while i < max_items:
+			itemDisplay = json.dumps(data["package"]["content"][i]["item"]["display"])
+			if "amount" in data["package"]["content"][i]:
+				# ammountType = "'numerator'"
+				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["value"]) + "'"
+				ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["system"]) + "'"
+				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["numerator"]["code"]) + "'"
+				contentInsert = "INSERT INTO PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
+				cur.execute(ingredientInsert)
+				con.commit();	
+			i += 1
+		cur.execute("SELECT * FROM PackageContent;")
+		print "\n\n\n\nPrinting out the complete list of contents!"
 		print cur.fetchall()
 #MONSTERS ABOVE
 
