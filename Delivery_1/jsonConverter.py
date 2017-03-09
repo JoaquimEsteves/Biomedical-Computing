@@ -226,9 +226,6 @@ if __name__ == "__main__":
 			with open(input_data) as data_file:    
 				data = json.load(data_file)
 				dataTest = json.dumps(data)
-				# print "DATA TEEEEEEEEEST\n\n\n\n\n\n"
-				# print dataTest
-				# print "DATATATAATATATA"
 				try:
 					medID = parseMedication(cur,con,data)
 					if 'product' in data:
