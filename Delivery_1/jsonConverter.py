@@ -65,6 +65,7 @@ def parseMedication(cur,con,data):
 
 def parseProduct(cur,con,data,medID):
 	text = 'NULL'
+	encodedText = 'NULL'
 	code = 'NULL'
 	display = 'NULL'
 	system = 'NULL'
