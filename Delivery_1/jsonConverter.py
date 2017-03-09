@@ -8,7 +8,6 @@ import sys
 import base64
 from pprint import pprint
 
-# con = None
 
 def parseMedication(cur,con,data):
 	if data["resourceType"] != "Medication":
