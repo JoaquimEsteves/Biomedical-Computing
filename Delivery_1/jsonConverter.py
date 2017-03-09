@@ -84,17 +84,23 @@ if __name__ == "__main__":
 						manufacturer = "'"+str(data['manufacturer']["reference"])+"'"
 					if 'isBrand' in data:
 						isBrand = "'"+str(data['isBrand'])+"'"
-					if 'code' in data:	
+					if 'code' in data:
+						#For some SILLY REASON, code also apparently can have text!
+						if 'text' in data['code']:
+							text = base64.b64decode(encodedText) + "Coding Text: " + str(data['code']['text'])
+							encodedText = "'"+str(base64.b64encode(text))+"'"
 						# coding = "'"+str(data['code']['coding'])+"'"
 						if 'coding' in data['code']:
-							code = "Codes: "
-							display = "Displays: "
-							system = "Systems: "
+							code = "'["
+							display = "'["
+							system = "'["
 							for i in data['code']['coding']:
-								code += "'"+str(data['code']['coding'][0]['code'])+"'"
-								display += "'"+str(data['code']['coding'][0]['display'])+"'"
-								system += "'"+str(data['code']['coding'][0]['system'])+"'"
-								
+								code += str(data['code']['coding'][i]['code'])+","
+								display += str(data['code']['coding'][i]['display'])+","
+								system += str(data['code']['coding'][i]['system'])+","
+							code += "]'"
+							display += "]'"
+							system += "]'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					print "HERE IT COMES\n\n"
@@ -103,7 +109,7 @@ if __name__ == "__main__":
 					cur.execute(medicationInsert)
 					con.commit();	
 					cur.execute("SELECT * FROM Medication;")
-					print "PLEASE WORK\n\n\\n\n\n\nn\n"
+					print "PLEASE WORK\n\n\n\n\n\n\n"
 					print cur.fetchall()
 				except ValueError:
 					print "Error %s:" % e.args[0]
