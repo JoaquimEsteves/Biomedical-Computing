@@ -97,10 +97,10 @@ def parseProduct(cur,con,data,medID):
 	print "\n\n\n\nPrinting out the complete list of Products!"
 	print cur.fetchall()
 	if 'ingredient' in data["product"]:
-		parseIngredient(cur,don,data,medID)
+		parseIngredient(cur,con,data,medID)
 	return
 	
-def parseIngredient(cur,don,data,medID):
+def parseIngredient(cur,con,data,medID):
 	itemDisplay = 'NULL'
 	ammountType = 'NULL'
 	ammountValue = 'NULL'
