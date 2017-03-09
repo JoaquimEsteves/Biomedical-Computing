@@ -98,6 +98,8 @@ def parseProduct(cur,con,data,medID):
 	print cur.fetchall()
 	if 'ingredient' in data["product"]:
 		parseIngredient(cur,con,data,medID)
+	else:
+		print "WHAT THE FUCK"
 	return
 	
 def parseIngredient(cur,con,data,medID):
@@ -127,6 +129,7 @@ def parseIngredient(cur,con,data,medID):
 				ingredientInsert = "INSERT INTO Ingredient VALUES ("+medID+","+itemDisplay+","+ammountType+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
 				cur.execute(ingredientInsert)
 				con.commit();
+			i += 1
 	cur.execute("SELECT * FROM Ingredient;")
 	print "\n\n\n\nPrinting out the complete list of Ingredients!"
 	print cur.fetchall()
