@@ -101,7 +101,7 @@ if __name__ == "__main__":
 								code += str(data['code']['coding'][i]['code'])+","
 								display += str(data['code']['coding'][i]['display'])+","
 								system += str(data['code']['coding'][i]['system'])+","
-								i++
+								i += 1
 							code += "]'"
 							display += "]'"
 							system += "]'"
