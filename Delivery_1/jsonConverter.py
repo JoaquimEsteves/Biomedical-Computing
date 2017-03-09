@@ -138,9 +138,9 @@ def parseBatch(cur,con,data,medID):
 	lotNumber = 'NULL'
 	expirationDate = 'NULL'
 	if 'lotNumber' in data["product"]["batch"][0]:
-		lotNumber = "'" + json.dumps(data["product"]["batch"][0]["lotNumber"])
+		lotNumber = "'" + json.dumps(data["product"]["batch"][0]["lotNumber"]) + "'"
 	if 'expirationDate' in data["product"]["batch"][0]:
-		expirationDate = "'" + json.dumps(data["product"]["batch"][0]["expirationDate"])
+		expirationDate = "'" + json.dumps(data["product"]["batch"][0]["expirationDate"]) + "'"
 	batchInsert = "INSERT INTO batch VALUES ("+medID+","+lotNumber+","+expirationDate+");"
 	cur.execute(batchInsert)
 	con.commit();
