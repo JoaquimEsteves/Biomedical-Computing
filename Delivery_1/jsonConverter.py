@@ -120,7 +120,11 @@ if __name__ == "__main__":
 			print "Ok just write down the name of the json file you want to open up!\n\n\n"
 			input_data = raw_input()
 			with open(input_data) as data_file:    
-				data = json.loads(data_file)
+				data = json.load(data_file)
+				dataTest = json.dumps(data)
+				print "DATA TEEEEEEEEEST\n\n\n\n\n\n"
+				print dataTest
+				print "DATATATAATATATA"
 				try:
 					medID = parseMedication(cur,con,data)
 					if 'product' in data:
