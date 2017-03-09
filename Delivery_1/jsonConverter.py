@@ -198,9 +198,9 @@ def parsePackageContent(cur,con,data,medID):
 			itemDisplay = json.dumps(data["package"]["content"][i]["item"]["reference"])
 			if "amount" in data["package"]["content"][i]:
 				# ammountType = "'numerator'"
-				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["value"]) + "'"
-				ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["numerator"]["system"]) + "'"
-				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["numerator"]["code"]) + "'"
+				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["value"]) + "'"
+				ammountSystem ="'" + json.dumps(data["package"]["content"][i]["amount"]["system"]) + "'"
+				ammountUnit ="'" +json.dumps(data["package"]["content"][i]["amount"]["code"]) + "'"
 				contentInsert = "INSERT INTO PackageContent ("+medID+","+itemDisplay+","+ammountValue+","+ammountUnit+","+ammountSystem+");"
 				cur.execute(ingredientInsert)
 				con.commit();	
