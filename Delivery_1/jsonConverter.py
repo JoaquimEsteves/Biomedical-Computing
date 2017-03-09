@@ -107,7 +107,7 @@ def parseIngredient(cur,con,data,medID):
 	ammountUnit = 'NULL'
 	ammountSystem = 'NULL'
 	ingredientInsert = ""
-	if "item" in data["product"]["ingredient"]:
+	if "item" in data["product"]["ingredient"][0]:
 		max_items = len(data["product"]["ingredient"])
 		i = 0
 		while i < max_items:
