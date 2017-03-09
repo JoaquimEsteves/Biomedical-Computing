@@ -56,8 +56,6 @@ def parseMedication(cur,con,data):
 			system += "]'"
 	medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 	medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
-	print "\n\n\n\nPrinting MEDICATION INSERT!"
-	print medicationInsert
 	cur.execute(medicationInsert)
 	con.commit();	
 	cur.execute("SELECT * FROM Medication;")
@@ -73,11 +71,11 @@ def parseProduct(cur,con,data,medID):
 	if 'form' in data["product"]:
 		if 'code' in data["product"]["form"]:
 			#For some SILLY REASON, code also apparently can have text!
-			if 'text' in data["product"]["form"]['code']:
-				text = base64.b64decode(encodedText) + "Coding Text: " + str(data['code']['text'])
+			if 'text' in data["product"]["form"]:
+				text = json.dumps(data["product"]["form"]['text'])
 				encodedText = "'"+str(base64.b64encode(text))+"'"
 			# coding = "'"+str(data['code']['coding'])+"'"
-			if 'coding' in data['code']:
+			if 'coding' in data["product"]["form"]:
 				code = "'["
 				display = "'["
 				system = "'["
@@ -90,8 +88,14 @@ def parseProduct(cur,con,data,medID):
 					i += 1
 				code += "]'"
 				display += "]'"
-				system += "]'"	
+				system += "]'"
+	productInsert = "INSERT INTO Product VALUES ("+medID+","+encodedText+","+code+","+display+","+system+");"
+	cur.execute(productInsert)
+	con.commit();	
+	cur.execute("SELECT * FROM Product;")
 	return
+	
+
 def parsePackage(cur,con,data,medID):
 	return
 	
