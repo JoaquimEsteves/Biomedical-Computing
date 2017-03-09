@@ -76,7 +76,8 @@ if __name__ == "__main__":
 					display = 'NULL'
 					system = 'NULL'
 					if 'text' in data :
-						# text = "'"+str(data["text"])+"'"
+						#ALWAYS ENCODE PLAIN TEXT WHEN DEALING WITH JSONS
+						#JSONS ARE REALLY BLOODY FINNICKY
 						text = str(data["text"])
 						encodedText = "'"+str(base64.b64encode(text))+"'"
 					if 'manufacturer' in data:
@@ -89,7 +90,7 @@ if __name__ == "__main__":
 						display = "'"+str(data['code']['coding'][0]['display'])+"'"
 						system = "'"+str(data['code']['coding'][0]['system'])+"'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
-					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
+					medicationInsert +=	","+encodedText+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					print "HERE IT COMES\n\n"
 					print medicationInsert
 					
