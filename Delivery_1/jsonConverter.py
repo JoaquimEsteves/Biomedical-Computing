@@ -85,9 +85,9 @@ if __name__ == "__main__":
 						isBrand = "'"+str(data['isBrand'])+"'"
 					if 'code' in data:	
 						# coding = "'"+str(data['code']['coding'])+"'"
-						code = "'"+str(data['code']['coding']['code'])+"'"
-						display = "'"+str(data['code']['coding']['display'])+"'"
-						system = "'"+str(data['code']['coding']['system'])+"'"
+						code = "'"+str(data['code']['coding'][0]['code'])+"'"
+						display = "'"+str(data['code']['coding'][0]['display'])+"'"
+						system = "'"+str(data['code']['coding'][0]['system'])+"'"
 					medicationInsert = "INSERT INTO Medication VALUES ("+medID+""
 					medicationInsert +=	","+text+","+manufacturer+","+isBrand+","+code+","+display+","+system+");"
 					print "HERE IT COMES\n\n"
