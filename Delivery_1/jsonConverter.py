@@ -28,16 +28,16 @@ def parseMedication(cur,con,data):
 	if 'text' in data :
 		#ALWAYS ENCODE PLAIN TEXT WHEN DEALING WITH JSONS
 		#JSONS ARE REALLY BLOODY FINNICKY
-		text = str(data["text"])
+		text = json.dumps(data["text"])
 		encodedText = "'"+str(base64.b64encode(text))+"'"
 	if 'manufacturer' in data:
-		manufacturer = "'"+str(data['manufacturer']["reference"])+"'"
+		manufacturer = "'"+json.dumps(data['manufacturer']["reference"])+"'"
 	if 'isBrand' in data:
-		isBrand = "'"+str(data['isBrand'])+"'"
+		isBrand = "'"+json.dumps(data['isBrand'])+"'"
 	if 'code' in data:
 		#For some SILLY REASON, code also apparently can have text!
 		if 'text' in data['code']:
-			text = base64.b64decode(encodedText) + "Coding Text: " + str(data['code']['text'])
+			text = base64.b64decode(encodedText) + "Coding Text: " + json.dumps(data['code']['text'])
 			encodedText = "'"+str(base64.b64encode(text))+"'"
 		# coding = "'"+str(data['code']['coding'])+"'"
 		if 'coding' in data['code']:
