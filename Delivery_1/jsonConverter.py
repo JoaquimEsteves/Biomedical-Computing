@@ -195,7 +195,7 @@ def parsePackageContent(cur,con,data,medID):
 		max_items = len(data["package"]["content"])
 		i = 0
 		while i < max_items:
-			itemDisplay = json.dumps(data["package"]["content"][i]["item"]["reference"])
+			itemDisplay = "'"+json.dumps(data["package"]["content"][i]["item"]["reference"])+"'"
 			if "amount" in data["package"]["content"][i]:
 				# ammountType = "'numerator'"
 				ammountValue ="'" + json.dumps(data["package"]["content"][i]["amount"]["value"]) + "'"
