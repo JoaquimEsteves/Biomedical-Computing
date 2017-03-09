@@ -84,7 +84,7 @@ if __name__ == "__main__":
 					if 'isBrand' in data:
 						isBrand = "'"+str(data['isBrand'])+"'"
 					if 'code' in data:	
-						coding = "'"+str(data+['code']['coding'])+"'"
+						coding = "'"+str(data['code']['coding'])+"'"
 						code = "'"+str(coding['code'])+"'"
 						display = "'"+str(coding['display'])+"'"
 						system = "'"+str(coding['system'])+"'"
