@@ -1,0 +1,28 @@
+﻿
+20085714
+613	625	pancreatitis	Disease	MESH:D010195
+20085714
+631	643	pancreatitis	Disease	MESH:D010195
+20085714
+664	681	pancreatic cancer	Disease	MESH:D010190
+20085714
+756	772	loss of appetite	Disease	MESH:D001068
+20085714
+1477	1490	hiatus hernia	Disease	MESH:D006547
+20085714
+1703	1716	hiatus hernia	Disease	MESH:D006547
+20085714
+2898	2915	pancreatic cancer	Disease	MESH:D010190
+20085714
+3122	3134	pancreatitis	Disease	MESH:D010195
+20085714
+3334	3351	pancreatic cancer	Disease	MESH:D010190
+20085714
+3484	3490	cancer	Disease	MESH:D009369
+20085714
+4375	4378	NHS	Disease	MESH:C538336
+20085714
+4824	4834	thrombosis	Disease	MESH:D013927
+20085714
+5311	5328	incisional hernia	Disease	MESH:D006547
+
